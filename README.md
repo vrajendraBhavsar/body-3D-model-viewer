@@ -1,4 +1,4 @@
-Android 3D Model Viewer
+Body 3D Model Viewer
 =======================
 
 This is a demo of OpenGL ES 2.0.
@@ -13,12 +13,6 @@ The purpose of this application is to learn and share how to draw using OpenGL l
 Demo
 ====
 Checkout this to see the features of the application: https://www.youtube.com/watch?v=PV92DKohXXk
-
-Android Market
-==============
-
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="125" alt="Get in on F-Droid">](https://f-droid.org/en/packages/org.andresoviedo.dddmodel2/)
-[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="323" height="125">](https://play.google.com/store/apps/details?id=org.andresoviedo.dddmodel2)
 
 
 Notice
@@ -152,19 +146,6 @@ Acknowledgement
 * To the lot of user's feedback: https://github.com/the3deer/android-3D-model-viewer/issues
 * For the GLTF parser https://github.com/javagl/JglTF
 * To the many infinite educational resources found in Internet for free :)
-
-
-Licenses
-========
-
-The following copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-
-    MIT License - Copyright (c) 2022 The 3Deer - https://github.com/the3deer
-    GNU LGPL v2.1 Copyright (c) 2001, 2002 Dipl. Ing. P. Szawlowski - STL Parser
-    MIT License - https://github.com/javagl/JglTF - GLTF Parser    
-    ISC License - Earcut - https://github.com/the3deer/earcut
 
 
 Assets
