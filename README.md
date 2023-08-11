@@ -1,8 +1,6 @@
 Android 3D Model Viewer
 =======================
 
-![travis-ci badge](https://travis-ci.org/the3deer/android-3D-model-viewer.svg?branch=main)
-
 This is a demo of OpenGL ES 2.0.
 It is basically an android application with a 3D engine that can load Wavefront OBJ, STL, DAE & GLTF files.
 The purpose of this application is to learn and share how to draw using OpenGL language.
@@ -12,20 +10,9 @@ The purpose of this application is to learn and share how to draw using OpenGL l
 * Collada format (DAE): https://en.wikipedia.org/wiki/COLLADA
 * GLTF format (gltf): https://www.khronos.org/gltf/
 
-
-News (04/10/2022)
-=================
-
-* Preparing version 4.0.0 for Google Play release...
-* New orthographic, isometric and free camera views
-* GLTF basic support :)
-* Rebranding to org.the3deer
-
 Demo
 ====
-
 Checkout this to see the features of the application: https://www.youtube.com/watch?v=PV92DKohXXk
-
 
 Android Market
 ==============
@@ -56,15 +43,6 @@ but I will try to continue improving the app and adding more features. So please
 complains by opening an [issue](https://github.com/the3deer/android-3D-model-viewer/issues).
 
 The app comes with some included 3D models that have different licenses.
-
-
-Whats next
-==========
-
-* Improve support for glTF standard format
-* VR without glasses (on hold)
-* Augmented reality
-
 
 Features
 ========
@@ -166,13 +144,6 @@ Dependencies
 
 * git submodule add https://github.com/the3deer/android-3D-engine.git engine (3d engine)
 * implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.4'  (gltf json parser)
-
-
-Documentation
-=============
-
-Working on it...
-
 
 Acknowledgement
 ===============
