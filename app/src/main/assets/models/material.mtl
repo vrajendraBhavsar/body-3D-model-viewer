@@ -1,0 +1,47 @@
+# Aspose.3D Wavefront OBJ Exporter
+# Copyright 2004-2023 Aspose Pty Ltd.
+# File created: 08/10/2023 06:30:21
+
+newmtl Bottom
+	illum 2
+	Kd 0.00490059005096554 0.0143512999638915 0.0135768000036478
+	Ke 0 0 0
+	Pr 0.67727297544479368
+	Pm 0
+	d 1
+	Tr 0
+newmtl OuterEye_001
+	illum 2
+	Kd 0.80000001192092896 0.80000001192092896 0.80000001192092896
+	Ke 0 0 0
+	Pr 0.2227270007133484
+	Pm 0
+	d 1
+	Tr 0
+newmtl Body
+	illum 2
+	Kd 1 1 1
+	Ke 0 0 0
+	Pr 0.56878811120986936
+	Pm 0
+	d 1
+	Tr 0
+	map_Kd body-baseColor.jpg
+	norm body-normal.jpg
+newmtl EyeLash
+	illum 2
+	Kd 0.02539250068366527 0.01249289978295564 0.00560135021805763
+	Ke 0 0 0
+	Pr 1
+	Pm 0
+	d 1
+	Tr 0
+newmtl Iris
+	illum 2
+	Kd 1 1 1
+	Ke 0 0 0
+	Pr 0.20909099280834196
+	Pm 0
+	d 1
+	Tr 0
+	map_Kd iris-baseColor.jpg
