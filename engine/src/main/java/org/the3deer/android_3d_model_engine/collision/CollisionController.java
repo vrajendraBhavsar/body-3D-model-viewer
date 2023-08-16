@@ -72,12 +72,12 @@ public class CollisionController implements EventListener {
                         }
                     }
 
-                    //Comment below two lines to hide white cube on component selection
+                    // Comment below two lines to hide white cube on component selection
                     final CollisionEvent collisionEvent = new CollisionEvent(this, objectHit, x, y, point3D);
                     AndroidUtils.fireEvent(listeners, collisionEvent);
 
-                    //To log and toast the the selected model-item name
-                    if (scene != null && scene.getSelectedObject() != null) {
+                    // To log and toast the the selected model-item name
+                    if (scene != null && scene.getSelectedObject() != null && scene.getSelectedObject().getElements().get(0).getMaterial() != null && scene.getSelectedObject().getElements().get(0).getMaterial().getName() != null) {
                         Log.v("CollisionController", "!@# item touched is::" + scene.getSelectedObject().getElements().get(0).getMaterial().getName());
 //                        Log.d("TAG", "!@# onEvent: objectHit.getName()::"+objectHit.getName());
                         Toast.makeText(view.getContext(), "Selected: " + scene.getSelectedObject().getElements().get(0).getMaterial().getName(), Toast.LENGTH_SHORT).show();

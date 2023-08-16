@@ -69,7 +69,7 @@ public class ModelActivity extends Activity implements EventListener {
     /**
      * Background GL clear color. Default is light gray
      */
-    private float[] backgroundColor = new float[]{0.0f, 0.0f, 0.0f, 1.0f};
+    private final float[] backgroundColor = new float[]{0.0f, 0.0f, 0.0f, 1.0f};
 
     private ModelSurfaceView glView;
     private TouchController touchController;
@@ -86,7 +86,7 @@ public class ModelActivity extends Activity implements EventListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i("ModelActivity", "onCreate: Loading activity... "+savedInstanceState);
+        Log.i("ModelActivity", "onCreate: Loading activity... " + savedInstanceState);
         super.onCreate(savedInstanceState);
 
         // Try to get input parameters
@@ -209,24 +209,22 @@ public class ModelActivity extends Activity implements EventListener {
             sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR);
             if (sensor != null) {
                 sensorManager.registerListener(new SensorEventListener() {
-                                                   @Override
-                                                   public void onSensorChanged(SensorEvent event) {
+                    @Override
+                    public void onSensorChanged(SensorEvent event) {
                                                        /*Log.v("ModelActivity","sensor: "+ Arrays.toString(event.values));
                                                            Quaternion orientation = new Quaternion(event.values);
                                                            orientation.normalize();
                                                            //scene.getSelectedObject().setOrientation(orientation);
                                                            glView.setOrientation(orientation);*/
-                                                   }
+                    }
 
-                                                   @Override
-                                                   public void onAccuracyChanged(Sensor sensor, int accuracy) {
+                    @Override
+                    public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
-                                                   }
-                                               }, sensor,
-                        SensorManager.SENSOR_DELAY_NORMAL, SensorManager.SENSOR_DELAY_UI);
+                    }
+                }, sensor, SensorManager.SENSOR_DELAY_NORMAL, SensorManager.SENSOR_DELAY_UI);
             }
-            OrientationEventListener mOrientationListener = new OrientationEventListener(
-                    getApplicationContext()) {
+            OrientationEventListener mOrientationListener = new OrientationEventListener(getApplicationContext()) {
                 @Override
                 public void onOrientationChanged(int orientation) {
                     //scene.onOrientationChanged(orientation);
@@ -237,32 +235,29 @@ public class ModelActivity extends Activity implements EventListener {
                 mOrientationListener.enable();
             }
         } catch (Exception e) {
-            Log.e("ModelActivity","There is an issue setting up sensors",e);
+            Log.e("ModelActivity", "There is an issue setting up sensors", e);
         }
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putFloatArray("camera.pos",scene.getCamera().getPos());
-        outState.putFloatArray("camera.view",scene.getCamera().getView());
-        outState.putFloatArray("camera.up",scene.getCamera().getUp());
-        outState.putString("renderer.projection",glView.getProjection().name());
-        outState.putInt("renderer.skybox",glView.getSkyBoxId());
+        outState.putFloatArray("camera.pos", scene.getCamera().getPos());
+        outState.putFloatArray("camera.view", scene.getCamera().getView());
+        outState.putFloatArray("camera.up", scene.getCamera().getUp());
+        outState.putString("renderer.projection", glView.getProjection().name());
+        outState.putInt("renderer.skybox", glView.getSkyBoxId());
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle state) {
-        if(state.containsKey("renderer.projection")) {
+        if (state.containsKey("renderer.projection")) {
             glView.setProjection(Projection.valueOf(state.getString("renderer.projection")));
         }
-        if(state.containsKey("camera.pos") && state.containsKey("camera.view") && state.containsKey("camera.up")){
-            Log.d("ModelActivity","onRestoreInstanceState: Restoring camera settings...");
-            scene.getCamera().set(
-                    state.getFloatArray("camera.pos"),
-                    state.getFloatArray("camera.view"),
-                    state.getFloatArray("camera.up"));
+        if (state.containsKey("camera.pos") && state.containsKey("camera.view") && state.containsKey("camera.up")) {
+            Log.d("ModelActivity", "onRestoreInstanceState: Restoring camera settings...");
+            scene.getCamera().set(state.getFloatArray("camera.pos"), state.getFloatArray("camera.view"), state.getFloatArray("camera.up"));
         }
-        if(state.containsKey("renderer.skybox")){
+        if (state.containsKey("renderer.skybox")) {
             glView.setSkyBox(state.getInt("renderer.skybox"));
         }
     }
@@ -402,8 +397,7 @@ public class ModelActivity extends Activity implements EventListener {
         // Set the content to appear under the system bars so that the content
         // doesn't resize when the system bars hide and show.
         final View decorView = getWindow().getDecorView();
-        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
                 | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
                 | View.SYSTEM_UI_FLAG_IMMERSIVE);
     }
@@ -411,9 +405,7 @@ public class ModelActivity extends Activity implements EventListener {
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void hideSystemUIJellyBean() {
         final View decorView = getWindow().getDecorView();
-        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LOW_PROFILE);
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LOW_PROFILE);
     }
 
     // This snippet shows the system bars. It does this by removing all the flags
@@ -430,47 +422,43 @@ public class ModelActivity extends Activity implements EventListener {
         if (resultCode != RESULT_OK) {
             return;
         }
-        switch (requestCode) {
-            case REQUEST_CODE_LOAD_TEXTURE:
-                // The URI of the selected file
-                final Uri uri = data.getData();
-                if (uri != null) {
-                    Log.i("ModelActivity", "Loading texture '" + uri + "'");
-                    try {
-                        ContentUtils.setThreadActivity(this);
-                        scene.loadTexture(null, uri);
-                    } catch (IOException ex) {
-                        Log.e("ModelActivity", "Error loading texture: " + ex.getMessage(), ex);
-                        Toast.makeText(this, "Error loading texture '" + uri + "'. " + ex
-                                .getMessage(), Toast.LENGTH_LONG).show();
-                    } finally {
-                        ContentUtils.setThreadActivity(null);
-                    }
+        if (requestCode == REQUEST_CODE_LOAD_TEXTURE) {// The URI of the selected file
+            final Uri uri = data.getData();
+            if (uri != null) {
+                Log.i("ModelActivity", "Loading texture '" + uri + "'");
+                try {
+                    ContentUtils.setThreadActivity(this);
+                    scene.loadTexture(null, uri);
+                } catch (IOException ex) {
+                    Log.e("ModelActivity", "Error loading texture: " + ex.getMessage(), ex);
+                    Toast.makeText(this, "Error loading texture '" + uri + "'. " + ex.getMessage(), Toast.LENGTH_LONG).show();
+                } finally {
+                    ContentUtils.setThreadActivity(null);
                 }
+            }
         }
     }
 
     @Override
     public boolean onEvent(EventObject event) {
-        if (event instanceof FPSEvent){
+        if (event instanceof FPSEvent) {
             gui.onEvent(event);
-        }
-        else if (event instanceof SelectedObjectEvent){
+        } else if (event instanceof SelectedObjectEvent) {
             gui.onEvent(event);
-        }
-        else if (event.getSource() instanceof MotionEvent){
+        } else if (event.getSource() instanceof MotionEvent) {
             // event coming from glview
             touchController.onMotionEvent((MotionEvent) event.getSource());
-        }
-        else if (event instanceof CollisionEvent){
+        } else if (event instanceof CollisionEvent) {
             scene.onEvent(event);
-        }
-        else if (event instanceof TouchEvent){
+        } else if (event instanceof TouchEvent) {
             TouchEvent touchEvent = (TouchEvent) event;
-            if (touchEvent.getAction() == TouchEvent.Action.CLICK){
+            if (touchEvent.getAction() == TouchEvent.Action.CLICK) {
                 Log.d("TAG", "!@# onEvent: item clicked");
 
-                if (scene != null && scene.getSelectedObject() != null) {
+                if (scene != null && scene.getSelectedObject() != null &&
+                        scene.getSelectedObject().getElements() != null &&
+                        scene.getSelectedObject().getElements().get(0).getMaterial() != null &&
+                        scene.getSelectedObject().getElements().get(0).getMaterial().getName() != null) {
                     Log.v("SceneLoader", "!@# Model Activity touched item::" + scene.getSelectedObject().getElements().get(0).getMaterial().getName());
                 }
 
@@ -482,12 +470,10 @@ public class ModelActivity extends Activity implements EventListener {
                     e.printStackTrace();
                 }*/
 
-                if (!collisionController.onEvent(event)){
+                if (!collisionController.onEvent(event)) {
                     scene.onEvent(event);
                 }
-            }
-
-            else {
+            } else {
                 if (scene.getSelectedObject() != null) {
                     scene.onEvent(event);
                 } else {
@@ -498,8 +484,7 @@ public class ModelActivity extends Activity implements EventListener {
                     }
                 }
             }
-        }
-        else if (event instanceof ViewEvent) {
+        } else if (event instanceof ViewEvent) {
             ViewEvent viewEvent = (ViewEvent) event;
             if (viewEvent.getCode() == ViewEvent.Code.SURFACE_CHANGED) {
                 cameraController.onEvent(viewEvent);
@@ -510,7 +495,7 @@ public class ModelActivity extends Activity implements EventListener {
                     gui.setSize(viewEvent.getWidth(), viewEvent.getHeight());
                     gui.setVisible(true);
                 }
-            } else if (viewEvent.getCode() == ViewEvent.Code.PROJECTION_CHANGED){
+            } else if (viewEvent.getCode() == ViewEvent.Code.PROJECTION_CHANGED) {
                 cameraController.onEvent(event);
             }
         }

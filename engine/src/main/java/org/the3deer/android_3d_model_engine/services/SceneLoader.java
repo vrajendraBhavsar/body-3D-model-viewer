@@ -760,7 +760,9 @@ public class SceneLoader implements LoadListener, EventListener {
             }
             else if (touch.getAction() == TouchEvent.Action.MOVE && selectedObject != null) {
 
-                float angle = (float) (Math.atan2(-touch.getdY(), touch.getdX()));
+
+                //This code was moving the selected part of the model
+                /*float angle = (float) (Math.atan2(-touch.getdY(), touch.getdX()));
                 Log.v("SceneLoader", "Rotating (axis:var): " + Math.toDegrees(angle) + " ,dx:" + touch.getdX() + ", dy:" + -touch.getdY());
 
                 float[] rightd = Math3DUtils.multiply(right, touch.getdY());
@@ -779,7 +781,7 @@ public class SceneLoader implements LoadListener, EventListener {
                 Quaternion multiply = Quaternion.multiply(selectedObject.getOrientation(), q1);
                 //multiply.normalize();
 
-                selectedObject.setOrientation(multiply);
+                selectedObject.setOrientation(multiply);*/
 
             }
         } else if (event instanceof CollisionEvent) {

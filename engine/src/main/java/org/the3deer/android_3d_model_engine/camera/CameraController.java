@@ -76,7 +76,7 @@ public final class CameraController implements EventListener {
                     break;
                 case MOVE:
                     float dx1 = touchEvent.getdX();
-                    float dy1 = touchEvent.getdY();
+                    float dy1 = 0;  //To restrict it from moving in 360 degree
                     float max = Math.max(width, height);
                     dx1 = (float) (dx1 / max * Math.PI * 2);
                     dy1 = (float) (dy1 / max * Math.PI * 2);
